@@ -1,0 +1,77 @@
+<html>
+<head>
+<title>HTTP运动操作</title>
+
+<script type="text/javascript">
+
+
+function conn_test()
+{
+	alert("如果是在机器上，直接使用行走工具tool测试下是否连接正常，如果不是在机器人上，先无线连接底盘，设置无线IP地址为网址IP：10.7.5.XX（具体配置可以参考文档, 设置完用后再用tool工具测试");
+}	
+
+function check_Collision_switch()
+{ 
+	//检测碰撞开关
+	window.open("http://10.7.5.88:8080/gs-robot/real_time_data/protector");	
+}
+
+
+function moveto01()
+{	 
+	post("http://10.7.5.88:8080/gs-robot/cmd/move",{speed:{linearSpeed:0.2,angularSpeed:0.2}});	
+}
+
+	  
+function post_bak(URL, PARAMS) {
+  var temp = document.createElement("form");
+  temp.action = URL;
+  temp.target = "_blank";
+  temp.method = "post";
+  temp.style.display = "none";
+  for (var x in PARAMS) {
+    var opt = document.createElement("textarea");
+    opt.name = x;
+    opt.value = PARAMS[x];
+    // alert(opt.name)
+    temp.appendChild(opt);
+  }
+  document.body.appendChild(temp);
+  temp.submit();
+  return temp;
+}
+
+function post(URL, PARAMS) {
+	//request = new ActivexObject("Msxml2.XMLHTTP"); 
+	var jsonStr = JSON.stringify(PARAMS);	
+	var request = null;
+	if(window.XMLHttpRequest)
+	{ 
+	 request = new XMLHttpRequest();
+	}
+	else if(window.ActiveXObject)
+	{ 
+	request = new ActiveXObject("Microsoft.XMLHTTP");
+	}	
+	request.open("POST", URL, true);
+	//request.onreadystatechange = updatePage;
+	//request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+	request.send(jsonStr);
+}
+</script>
+
+
+<script language="JavaScript" for="test" event="OnReadIDCard(ret)">
+           alert("OnReadIDCard = " + ret);
+</script>
+
+</head>
+
+
+<body>
+<object id="test" classid="CLSID:85E21E79-EBD9-49D5-9AAC-783F359B62E8" codebase="ItmDevCtl.ocx#version=1, 0, 0, 1"></object>
+</br>
+其他测试：<input type="button" value="1.检测碰撞开关" onclick="moveto01()" /></br>
+</body>
+
+</html>

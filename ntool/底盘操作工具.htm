@@ -1,0 +1,428 @@
+<html>
+<head>
+<title>高仙底盘——操作网页</title>
+
+<script type="text/javascript">
+
+function conn_test()
+{
+	alert("如果是在机器上，直接使用行走工具tool测试下是否连接正常，如果不是在机器人上，先无线连接底盘，设置无线IP地址为网址IP：10.7.5.XX（具体配置可以参考文档, 设置完用后再用tool工具测试");
+}	
+
+function conn_ping()
+{
+	window.open("http://10.7.5.88:8080/gs-robot/cmd/ping");
+}
+	
+function step_01() 
+{
+	//1.删除同名地图office
+    window.open("http://10.7.5.88:8080/gs-robot/cmd/delete_map?map_name=office");        
+}
+
+function step_02()
+{
+	//开始扫描地图
+    window.open("http://10.7.5.88:8080/gs-robot/cmd/start_scan_map?map_name=office");   	
+}
+function step_03()
+{
+	//用tool扫地图
+    alert("!请使用地图行走工具扫描整个地图空间，记得扫完后关闭行走工具哦");
+}
+function step_04()
+{
+	//结束扫描并保存地图
+	window.open("http://10.7.5.88:8080/gs-robot/cmd/stop_scan_map");
+}
+function step_05()
+{
+	//加载地图
+   window.open("http://10.7.5.88:8080/gs-robot/cmd/use_map?map_name=office");
+}
+function step_06()
+{
+	//在扫描终点进行初始化
+	alert("初始化后请记住当前机器人的位置及朝向");
+    window.open("http://10.7.5.88:8080/gs-robot/cmd/initialize?map_name=office&init_point_name=End");
+}
+
+function init_with_current()
+{
+	//在当前点进行初始化
+	  window.open("http://10.7.5.88:8080/gs-robot/cmd/initialize?map_name=office&init_point_name=Current");
+}
+
+function init_with_temp()
+{
+	alert("!使用Temp点进行初始化之前请记得先在地图上设置Temp初始化点哦");
+	//在当前点进行初始化
+	  window.open("http://10.7.5.88:8080/gs-robot/cmd/initialize?map_name=office&init_point_name=Temp");
+}
+
+function step_07()
+{
+	//检查初始化是否完成
+   window.open("http://10.7.5.88:8080/gs-robot/cmd/is_initialize_finished");
+}
+
+function stop_move()
+{
+	//停止当前移动
+	window.open("http://10.7.5.88:8080/gs-robot/cmd/cancel_navigate");
+}
+
+function set_charge_point()
+{
+	//设置机器人当前所在位置为充电点
+	window.open("http://10.7.5.88:8080/gs-robot/cmd/add_position?position_name=c1&type=1");
+}
+
+function get_position()
+{
+	//获取当前机器人实时位置
+	//window.open("http://10.7.5.88:8080/gs-robot/real_time_data/position");
+	
+	//获取所有在软件robot_toolbox中配置的点
+	window.open("http://10.7.5.88:8080/gs-robot/data/positions?map_name=office");
+	
+}
+
+
+function get_init_point()
+{
+	//获取当前机器人实时位置
+	//window.open("http://10.7.5.88:8080/gs-robot/real_time_data/position");
+	
+	//获取所有在软件robot_toolbox中配置的点
+	window.open("http://10.7.5.88:8080/gs-robot/data/init_points?map_name=office");
+	
+}
+
+
+function check_Collision_switch()
+{
+	 
+	//检测碰撞开关
+	window.open("http://10.7.5.88:8080/gs-robot/real_time_data/protector");
+	
+}
+
+function check_ultrasonic_0()
+{
+	//检测超声接口0
+	window.open("http://10.7.5.88:8080/gs-robot/real_time_data/ultrasonic_raw?frame_id=ultrasonic0");
+}
+function check_ultrasonic_1()
+{
+	//检测超声接口0
+	window.open("http://10.7.5.88:8080/gs-robot/real_time_data/ultrasonic_raw?frame_id=ultrasonic1");
+}
+function check_ultrasonic_2()
+{
+	//检测超声接口0
+	window.open("http://10.7.5.88:8080/gs-robot/real_time_data/ultrasonic_raw?frame_id=ultrasonic2");
+}
+function check_ultrasonic_3()
+{
+	//检测超声接口0
+	window.open("http://10.7.5.88:8080/gs-robot/real_time_data/ultrasonic_raw?frame_id=ultrasonic3");
+}
+function check_ultrasonic_4()
+{
+	//检测超声接口0
+	window.open("http://10.7.5.88:8080/gs-robot/real_time_data/ultrasonic_raw?frame_id=ultrasonic4");
+}
+function check_ultrasonic_5()
+{
+	//检测超声接口0
+	window.open("http://10.7.5.88:8080/gs-robot/real_time_data/ultrasonic_raw?frame_id=ultrasonic5");
+}
+function check_ultrasonic_6()
+{
+	//检测超声接口0
+	window.open("http://10.7.5.88:8080/gs-robot/real_time_data/ultrasonic_raw?frame_id=ultrasonic6");
+}
+
+function movetopoint0()
+{
+	 
+	//移动到point0
+	window.open("http://10.7.5.88:8080/gs-robot/cmd/position/navigate?map_name=office&position_name=point1");
+	
+}
+
+function movetopoint1()
+{
+	 
+	//移动到point1
+	window.open("http://10.7.5.88:8080/gs-robot/cmd/position/navigate?map_name=office&position_name=p2");
+	
+}
+
+function movetopoint2()
+{
+	 
+	//移动到point1
+	window.open("http://10.7.5.88:8080/gs-robot/cmd/position/navigate?map_name=office&position_name=p3");
+	
+}
+
+
+function movetopoint3()
+{
+	 
+	//移动到point1
+	window.open("http://10.7.5.88:8080/gs-robot/cmd/position/navigate?map_name=office&position_name=p4");
+	
+}
+
+function movetopoint4()
+{
+	 
+	//移动到point1
+	window.open("http://10.7.5.88:8080/gs-robot/cmd/position/navigate?map_name=office&position_name=p5");
+	
+}
+
+function movetopoint5()
+{
+	 
+	//移动到point1
+	window.open("http://10.7.5.88:8080/gs-robot/cmd/position/navigate?map_name=office&position_name=p6");
+	
+}
+
+function movetochargepoint0()
+{
+	 
+	//移动到point0
+	window.open("http://10.7.5.88:8080/gs-robot/cmd/position/navigate?map_name=office&position_name=c1");
+	
+}
+
+
+function post_bak(URL, PARAMS) {
+  var temp = document.createElement("form");
+  temp.action = URL;
+  temp.target = "_blank";
+  temp.method = "post";
+  temp.style.display = "none";
+  for (var x in PARAMS) {
+    var opt = document.createElement("textarea");
+    opt.name = x;
+    opt.value = PARAMS[x];
+    // alert(opt.name)
+    temp.appendChild(opt);
+  }
+  document.body.appendChild(temp);
+  temp.submit();
+  return temp;
+}
+
+function post(URL, PARAMS) {
+	//request = new ActivexObject("Msxml2.XMLHTTP"); 
+	var jsonStr = JSON.stringify(PARAMS);	
+	var request = null;
+	if(window.XMLHttpRequest)
+	{ 
+	 request = new XMLHttpRequest();
+	}
+	else if(window.ActiveXObject)
+	{ 
+	request = new ActiveXObject("Microsoft.XMLHTTP");
+	}	
+	request.open("POST", URL, true);
+	//request.onreadystatechange = updatePage;
+	//request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+	request.send(jsonStr);
+}
+
+function movetobatai()
+{
+	post("http://10.7.5.88:8080/gs-robot/cmd/navigate",{destination:{angle:89.7,gridPosition:{x:462,y:505}}});	
+}
+function moveto01()
+{	 
+	post("http://10.7.5.88:8080/gs-robot/cmd/move",{speed:{linearSpeed:0.2,angularSpeed:0.2}});	
+}
+function moveto02()
+{	 
+	post("http://10.7.5.88:8080/gs-robot/cmd/navigate",{destination:{angle:167.5,gridPosition:{x:460,y:549}}});	
+}
+function moveto03()
+{	 
+	post("http://10.7.5.88:8080/gs-robot/cmd/navigate",{destination:{angle:167.2,gridPosition:{x:442,y:516}}});	
+}
+function moveto04()
+{	 
+	post("http://10.7.5.88:8080/gs-robot/cmd/navigate",{destination:{angle:172.3,gridPosition:{x:409,y:466}}});	
+}
+function moveto05()
+{	 
+	post("http://10.7.5.88:8080/gs-robot/cmd/navigate",{destination:{angle:-9.1,gridPosition:{x:431,y:462}}});	
+}
+function moveto06()
+{	 
+	post("http://10.7.5.88:8080/gs-robot/cmd/navigate",{destination:{angle:-143.5,gridPosition:{x:517,y:433}}});	
+}
+function moveto07()
+{	 
+	post("http://10.7.5.88:8080/gs-robot/cmd/navigate",{destination:{angle:13.8,gridPosition:{x:547,y:343}}});	
+}
+function moveto08()
+{	 
+	post("http://10.7.5.88:8080/gs-robot/cmd/navigate",{destination:{angle:-20.2,gridPosition:{x:555,y:404}}});	
+}
+function moveto09()
+{	 
+	post("http://10.7.5.88:8080/gs-robot/cmd/navigate",{destination:{angle:-21,gridPosition:{x:579,y:457}}});	
+}
+function moveto10()
+{	 
+	post("http://10.7.5.88:8080/gs-robot/cmd/navigate",{destination:{angle:-45,gridPosition:{x:611,y:538}}});	
+}
+function moveto11()
+{	 
+	post("http://10.7.5.88:8080/gs-robot/cmd/navigate",{destination:{angle:-28.6,gridPosition:{x:622,y:554}}});	
+}
+function moveto12()
+{	 
+	post("http://10.7.5.88:8080/gs-robot/cmd/navigate",{destination:{angle:-28.8,gridPosition:{x:628,y:569}}});	
+}
+function moveto13()
+{	 
+	post("http://10.7.5.88:8080/gs-robot/cmd/navigate",{destination:{angle:-2.1,gridPosition:{x:633,y:575}}});	
+}
+function moveto14()
+{	 
+	post("http://10.7.5.88:8080/gs-robot/cmd/navigate",{destination:{angle:68.6,gridPosition:{x:587,y:600}}});	
+}
+function moveto15()
+{	 
+	post("http://10.7.5.88:8080/gs-robot/cmd/navigate",{destination:{angle:-44.2,gridPosition:{x:452,y:507}}});	
+}
+function moveto16()
+{	 
+	post("http://10.7.5.88:8080/gs-robot/cmd/navigate",{destination:{angle:-133.3,gridPosition:{x:533,y:469}}});	
+}
+
+</script>
+	  
+<script language="JavaScript" for="test" event="OnReadIDCard(ret)">
+           alert("OnReadIDCard = " + ret);
+    </script>
+</head>
+<body>
+
+<object id="test" classid="CLSID:85E21E79-EBD9-49D5-9AAC-783F359B62E8" codebase="ItmDevCtl.ocx#version=1, 0, 0, 1"></object>
+
+<br/>
+准备工作：
+<!--
+<input type="button" value="0.测试下底盘是否连接正常" onclick="conn_test()" /> 
+-->
+<input type="button" value="1.测试下底盘http通信是否正常" onclick="conn_ping()" /><br />
+<hr/><br/>
+扫地图步骤：<br/>
+<!--
+<font color="EA000">注意，在第6步，记住初始化的点的位置和机器人朝向(告诉银行维护人员并最好在文件  棠宝金融机器人恢复地图.htm 中标明)。后期地图修正时要用到。</font><br/><br/>
+-->
+<input type="button" value="1.删除同名地图office" onclick="step_01()" />
+<input type="button" value="2.开始扫描地图office" onclick="step_02()" />
+<input type="button" onmouseover="this.style.backgroundColor='#dd00dd';" onmouseout="this.style.backgroundColor='#ff00ff';"
+style=" width:150px; height:22px; border:#666 1px solid; background:#ff00ff; color:#000000" value="3.用tool工具扫地图" onclick="step_03()" />
+<input type="button" value="4.结束扫描并保存地图" onclick="step_04()" />
+
+<hr/><br/>
+初始化操作：<br/>
+使用扫描终点初始化：
+<input type="button" value="1.加载地图" onclick="step_05()" />
+<input type="button" value="2.使用地图扫描终点进行初始化" onclick="step_06()" />
+<input type="button" value="3.检查初始化是否完成" onclick="step_07()" />
+<br/>
+使用关机低点初始化：
+<input type="button" value="1.加载地图" onclick="step_05()" />
+<input type="button" value="2.使用上次关机地点进行初始化" onclick="init_with_current()"/>
+<input type="button" value="3.检查初始化是否完成" onclick="step_07()" />
+<br/>
+使用自设Temp初始化：
+<input type="button" value="1.加载地图" onclick="step_05()" />
+<input type="button" value="2.使用标定的Temp点进行初始化" onclick="init_with_temp()"/>
+<input type="button" value="3.检查初始化是否完成" onclick="step_07()" />
+<br/>
+<!--
+<font color="#EA000">扫完地图后，把文件 棠宝金融机器人恢复地图.htm 放到桌面上，以便后期银行人员修正地图用</font>
+-->
+<hr/><br/>
+其他重要操作：</br>
+<input type="button" onmouseover="this.style.backgroundColor='#dd0000';" onmouseout="this.style.backgroundColor='#ff0000';" 
+style=" width:150px; height:22px; border:#666 1px solid; background:#ff0000; color:#00ffff" value="停止当前导航!!!" onclick="stop_move()" />
+</br>
+<input type="button" value="获取所有在地图编辑软件中配置的目标点" onclick="get_position()" />
+<input type="button" value="获取所有在地图编辑软件中配置的初始点" onclick="get_init_point()" />
+</br>
+<input type="button" value="设置当前机器人所在位置为充电点c1" onclick="set_charge_point()" />
+<hr><br>
+其他测试：<br/>
+<input type="button" value="1.检测碰撞开关" onclick="check_Collision_switch()" />
+</br>
+<input type="button" value="1.检测超声1" onclick="check_ultrasonic_0()" />
+<input type="button" value="1.检测超声2" onclick="check_ultrasonic_1()" />
+<input type="button" value="1.检测超声3" onclick="check_ultrasonic_2()" />
+<input type="button" value="1.检测超声4" onclick="check_ultrasonic_3()" />
+<input type="button" value="1.检测超声5" onclick="check_ultrasonic_4()" />
+<input type="button" value="1.检测超声6" onclick="check_ultrasonic_5()" />
+<input type="button" value="1.检测超声7" onclick="check_ultrasonic_6()" />
+
+<hr/><br/>
+行走基本测试：定点行走请先在地图编辑工具上标好目标点，可取名"p1"~"p6";充电行走请先在地图编辑工具上标好充电点，可取名"c1"~"c6"<br/>
+定点行走：
+<input type="button" onmouseover="this.style.backgroundColor='#00dd00';" onmouseout="this.style.backgroundColor='#00ff00';"
+style=" width:90px; height:22px; border:#666 1px solid; background:#00ff00; color:#000000" value="1.MoveTo p1" onclick="movetopoint0()" />
+<input type="button" onmouseover="this.style.backgroundColor='#00dd00';" onmouseout="this.style.backgroundColor='#00ff00';"
+style=" width:90px; height:22px; border:#666 1px solid; background:#00ff00; color:#000000" value="2.MoveTo p2" onclick="movetopoint1()" />
+<input type="button" onmouseover="this.style.backgroundColor='#00dd00';" onmouseout="this.style.backgroundColor='#00ff00';"
+style=" width:90px; height:22px; border:#666 1px solid; background:#00ff00; color:#000000" value="3.MoveTo p3" onclick="movetopoint2()" />
+<input type="button" onmouseover="this.style.backgroundColor='#00dd00';" onmouseout="this.style.backgroundColor='#00ff00';"
+style=" width:90px; height:22px; border:#666 1px solid; background:#00ff00; color:#000000" value="4.MoveTo p4" onclick="movetopoint3()" />
+<input type="button" onmouseover="this.style.backgroundColor='#00dd00';" onmouseout="this.style.backgroundColor='#00ff00';"
+style=" width:90px; height:22px; border:#666 1px solid; background:#00ff00; color:#000000" value="5.MoveTo p5" onclick="movetopoint4()" />
+<input type="button" onmouseover="this.style.backgroundColor='#00dd00';" onmouseout="this.style.backgroundColor='#00ff00';"
+style=" width:90px; height:22px; border:#666 1px solid; background:#00ff00; color:#000000" value="6.MoveTo p6" onclick="movetopoint5()" />
+<br/>
+充电行走：
+<input type="button" onmouseover="this.style.backgroundColor='#00dddd';" onmouseout="this.style.backgroundColor='#00ffff';" 
+style=" width:90px; height:22px; border:#666 1px solid; background:#00ffff; color:#000000" value="1.MoveTo c1" onclick="movetochargepoint0()" />
+<br/>
+<hr>
+<br>
+<!--
+包商工作人员移动工具
+<br/>
+<input type="button" value="吧台" onclick="movetobatai()" />
+<br/>
+<br/>
+<input type="button" value="01号桌" onclick="moveto01()" />
+<input type="button" value="02号桌" onclick="moveto02()" />
+<input type="button" value="03号桌" onclick="moveto03()" />
+<input type="button" value="04号桌" onclick="moveto04()" />
+<input type="button" value="05号桌" onclick="moveto05()" />
+<input type="button" value="06号桌" onclick="moveto06()" />
+<input type="button" value="07号桌" onclick="moveto07()" />
+<input type="button" value="08号桌" onclick="moveto08()" />
+<br/>
+<br/>
+<input type="button" value="09号桌" onclick="moveto09()" />
+<input type="button" value="10号桌" onclick="moveto10()" />
+<input type="button" value="11号桌" onclick="moveto11()" />
+<input type="button" value="12号桌" onclick="moveto12()" />
+<input type="button" value="13号桌" onclick="moveto13()" />
+<input type="button" value="14号桌" onclick="moveto14()" />
+<input type="button" value="15号桌" onclick="moveto15()" />
+<input type="button" value="16号桌" onclick="moveto16()" />
+<br/>
+<br/>
+-->
+</body>
+</html>
